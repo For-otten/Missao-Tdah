@@ -117,6 +117,7 @@
     bottom: 24px;
     left: 25px;
     font-size: small;
+    cursor: pointer;
 }
 
 
@@ -137,6 +138,7 @@
     border: none;
     padding: 1% 9%;
     border-radius: 13px;
+    cursor: pointer;
 }
 
 #naoDeletarEvento {
@@ -146,6 +148,7 @@
     padding: 1% 9%;
     border: none;
     margin-left: 7%;
+    cursor: pointer;
 }
 
 #modalTitle {
@@ -216,7 +219,8 @@
 }
     #cancelEventButton:hover{
          opacity:0.8;
-         transition: 200ms
+         transition: 200ms;
+         cursor: pointer;
      }
 
 #saveEventButton {
@@ -231,5 +235,7 @@
 }
     #saveEventButton:hover {
         opacity: 0.8;
-        transition: 200ms
+        transition: 200ms;
+        cursor: pointer;
+
     }
