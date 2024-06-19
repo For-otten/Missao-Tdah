@@ -52,7 +52,15 @@ document.addEventListener('DOMContentLoaded', function () {
         },
 
         eventDrop: function (info) {
-            saveEventToLocalStorage(info.event.id, info.event.title, info.event.startStr);
+            var eventId = info.event.id;
+            var newStart = info.event.startStr;
+            updateEventInLocalStorage(eventId, { start: newStart });
+        },
+
+        eventResize: function (info) {
+            var eventId = info.event.id;
+            var newEnd = info.event.endStr;
+            updateEventInLocalStorage(eventId, { end: newEnd });
         },
 
         eventColor: '#258A5E',
@@ -123,8 +131,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveEventToLocalStorage(id, title, date) {
         var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-        eventos.push({ id: id, title: title, date: date });
+        var existingEventIndex = eventos.findIndex(evento => evento.id === id);
+        if (existingEventIndex !== -1) {
+            // Update existing event
+            eventos[existingEventIndex] = { id: id, title: title, date: date };
+        } else {
+            // Add new event
+            eventos.push({ id: id, title: title, date: date });
+        }
         localStorage.setItem('eventos', JSON.stringify(eventos));
+    }
+
+    function updateEventInLocalStorage(id, updates) {
+        var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+        var existingEventIndex = eventos.findIndex(evento => evento.id === id);
+        if (existingEventIndex !== -1) {
+            // Update existing event with provided updates
+            eventos[existingEventIndex] = { ...eventos[existingEventIndex], ...updates };
+            localStorage.setItem('eventos', JSON.stringify(eventos));
+        }
     }
 
     function deleteEventFromLocalStorage(id) {
