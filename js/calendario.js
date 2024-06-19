@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             editButtonEvent.onclick = function () {
                 var newTitle = inputEventText.value;
                 selectedEvent.setProp('title', newTitle);
-                saveEventToLocalStorage(eventId, newTitle, selectedEvent.startStr);
+                updateEventInLocalStorage(eventId, { title: newTitle });
                 modalEditEvent.style.display = 'none';
             };
 
@@ -112,13 +112,14 @@ document.addEventListener('DOMContentLoaded', function () {
             var eventTitle = eventTitleInput.value;
             if (eventTitle) {
                 var eventId = generateUniqueId();
+                var eventDateStr = date.toISOString(); // Convert date to ISO string
                 calendar.addEvent({
                     id: eventId,
                     title: eventTitle,
-                    start: date,
+                    start: eventDateStr, // Use ISO string as start date
                     allDay: true,
                 });
-                saveEventToLocalStorage(eventId, eventTitle, date);
+                saveEventToLocalStorage(eventId, eventTitle, eventDateStr);
                 eventModal.style.display = 'none';
             }
         };
@@ -131,23 +132,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function saveEventToLocalStorage(id, title, date) {
         var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-        var existingEventIndex = eventos.findIndex(evento => evento.id === id);
-        if (existingEventIndex !== -1) {
-            // Update existing event
-            eventos[existingEventIndex] = { id: id, title: title, date: date };
-        } else {
-            // Add new event
-            eventos.push({ id: id, title: title, date: date });
-        }
+        eventos.push({ id: id, title: title, start: date });
         localStorage.setItem('eventos', JSON.stringify(eventos));
     }
 
     function updateEventInLocalStorage(id, updates) {
         var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
-        var existingEventIndex = eventos.findIndex(evento => evento.id === id);
-        if (existingEventIndex !== -1) {
-            // Update existing event with provided updates
-            eventos[existingEventIndex] = { ...eventos[existingEventIndex], ...updates };
+        var existingEvent = eventos.find(evento => evento.id === id);
+        if (existingEvent) {
+            Object.assign(existingEvent, updates);
             localStorage.setItem('eventos', JSON.stringify(eventos));
         }
     }
@@ -164,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
             calendar.addEvent({
                 id: evento.id,
                 title: evento.title,
-                start: evento.date,
+                start: evento.start, // Use 'start' to reflect event's time
                 allDay: true,
             });
         });
