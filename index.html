@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta charset="utf-8">
+    <title>Missão TDAH</title>
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css">
+    <link href="https://fonts.cdnfonts.com/css/verdana" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/pomodoro.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" href="./css/calendario.css">
+    <link rel="stylesheet" type="text/css" href="./css/tarefas.css">
+    <link rel="stylesheet" type="text/css" href="./css/alarme.css">
+       
+</head>
+<body id="body">
+    <div id="calendar">
+
+    </div>
+    <div id="version">
+        <p>Você está explorando nossa versão de testes!<br> Este site ainda está em desenvolvimento e não inclui todos os recursos planejados.<br></p>
+    </div>
+    <div id="BarraDeTarefas">
+        <div class="pomodoro">
+        <p id="tituloPomodoro">Pomodoro</p>
+
+        <div id="ConfigurarPomodoro">
+            <p id="TituloConfig">Configurações</p>
+
+            <div id="focoCampo">
+                 <p>Ciclo de foco</p>
+                <input type="range" id="tempoTrabalho" min="5" max="60" step="5" value="25">
+                <input type="text" id="textInput" style="color:black" disabled>
+            </div>
+
+            <div id="campoDescanso">
+                <p>Descanso</p>
+                <input type="range" id="tempoDescansoPomodoro" min="5" max="60" step="5" value="5">
+                <input type="text" id="textInputDescanso" style="color:black" disabled>
+           </div>
+
+           <div id="campoVolume">
+                <p>Ajuste o volume dos audios</p>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="1" >
+           </div>
+
+            <button id="SalvarConfig">
+            Salvar
+            </button>
+        </div>
+
+        <div id="pomodoroContent">
+          <audio id="fimIntervalo" src="./content/fimIntervalo.mp3"></audio>
+          <audio id="intervaloPomodoroAudio" src="./content/intervalo.mp3"></audio>
+          <audio id="pauseTimePomodoroAudio" src="./content/pause.mp3"></audio>
+         <div id="statusPomodoro">
+            <i id ="horaTrabalho" class="fa-solid fa-business-time"></i>
+            <i id="horaDescanso" class="fa-solid fa-moon"></i>
+          </div>
+          <div id="timer"> 
+
+            <h1 id="minutosPomodoro"></h1>
+            <h1 id="segundosPomodoro"></h1>
+
+          </div>
+
+          <div id="fasesPomodoro">
+              <p id="fasesPomodoroTxt">Fase: </p>
+              <p id="contadorFases">1/4</P>
+              <audio id="fimPomodoroAudio" src="../public/content/finish.mp3"></audio>
+          </div>
+          <p id="tarefaConcluida">Tarefa concluída  <i class="fa-solid fa-check"></i></p>
+          <div id="pomodoroButtons">
+            <button id="resetPomodoro">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+                <button id="iniciarPomodoro">
+                    <audio id="inicioPomodoroAudio" src="./content/123ja.mp3"></audio>
+                    <i id="iconeBotaoPomodoro" class="fa-solid fa-play"></i>
+                </button>
+                <button id="abrirConfig">
+                     <i class="fa-solid fa-gear"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+        <h2 id="tituloPerfil"></h2>
+        <div id="perfil">
+            <div id="BtnAbrirPerfil">
+                <i class="fa-solid fa-angles-right fa-rotate-180" id="abrirPerfil" > </i>
+                <p>Perfil</p>
+            </div>
+            <p id="nome">Cachorro Nerd</p>
+            <img id="fotoPerfil" src="./img/usuario.jpeg"/>
+          </div>
+         <a id="logout">Sair</a>
+         <div id="noLogout">
+            <p>Logout indisponível <br> na versão de testes.</p>
+         </div>
+        <p id="TituloBarraDeTarefas" class="underline-title">Tarefas do dia</p>
+    </div>
+
+    
+    <div id="eventModal" style="display: none;">
+        <h2 id="modalTitle">Adicionar Evento</h2>
+        <div id="dataEventoCampo"> 
+            <p style="font-weight:bold; width:12%">Data </p>
+            <input type="text" id="eventDate" disabled>
+        </div>
+        <div id="campoAdicionarEvento"> 
+            <input type="text" id="eventTitle" placeholder="Evento">
+        </div>
+        <div id="linha"></div>
+        <div id="eventButtons"> 
+         <button id="cancelEventButton">Cancelar</button>
+         <button id="saveEventButton">Criar Evento</button>
+       </div>
+
+    </div>
+    
+       <div id="modalEditarEvento">
+        <h2 id="editEventTitle">O que deseja fazer com o evento?</h2>
+        <div id="campoTextoEvento"> 
+            <p id="campoDateEdit">Data 
+            <input type="text" id="eventEditDate" disabled></p>
+            <input type="text" id="eventContent" >
+        </div>
+        <div id="buttonsEditarEvento"> 
+         <button id="cancelButton">Cancelar</button>
+         <button id="editButton">Salvar Edição</button>
+       </div>
+
+        <div id="campoDeletarEvento">
+        <div id="popUpDeletarEvento">
+        <p style="font-size:small">Quer mesmo deletar o evento?</p>
+        <button id="deletarEvento">Sim</button>
+        <button id="naoDeletarEvento">Não</button>
+        </div>
+        <button id="deleteButton">Deletar Evento</button>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+    <script src="https://kit.fontawesome.com/5a9958acce.js" crossorigin="anonymous"></script>
+    <script src="./js/pomodoro.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/calendario.js"></script>
+    <script src="./js/tarefas.js"></script>
+    <script src="./js/alarme.js"></script>
+
+</body>
+</html>

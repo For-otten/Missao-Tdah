@@ -1,0 +1,89 @@
+#BarraDeTarefas {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: #A5303E;
+    height: 100%;
+    transition: 300ms;
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+#tituloPerfil {
+    text-align:center;
+    margin:6% 0;
+    letter-spacing:1px;
+    display:none;
+    color:white
+}
+
+#TituloBarraDeTarefas {
+    margin-top: 5%;
+    text-align: center;
+    letter-spacing: 3px;
+    font-size:smaller;
+    font-weight:bold;
+    display:none;
+}
+
+#BtnAbrirPerfil{
+    display:flex;
+    align-items:center;
+    color:white;
+    margin-right:7%
+
+}
+#perfil {
+    border-radius: 10px;
+    background-color: #8A1A27;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    transition: 400ms;
+    padding: 2%;
+    box-shadow: inset 0px 8px 13px -9px #000000;
+}
+#nome {
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    display:none;
+}
+
+#fotoPerfil {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid;
+}
+#abrirPerfil {
+    font-size: large;
+    cursor: pointer;
+    transition: 300ms;
+    color:white;
+    opacity:0.7
+}
+    #abrirPerfil:hover {
+        padding-left: 10%;
+        transition: 300ms;
+        opacity: 1
+    }
+
+#logout {
+    position: absolute;
+    bottom: 5px;
+    left: 190px;
+    display: none;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    transition: 200ms
+}#logout:hover{
+     opacity:0.5;
+     transition:200ms;
+ }

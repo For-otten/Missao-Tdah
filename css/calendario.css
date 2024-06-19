@@ -1,0 +1,235 @@
+#calendar {
+    width: 83%;
+    position: sticky;
+    margin: 9px 21px;
+    padding: 9px 12px;
+    background-color: beige;
+    opacity: 0.8;
+    border-radius: 10px;
+    box-shadow: -14px 16px 14px -1px rgba(0,0,0,0.3);
+}
+
+#modalEditarEvento {
+    display:none;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 23%;
+    left: 30%;
+    background-color: rgba(1000,1000,1000);
+    border-radius: 23px;
+    height: 39%;
+    width: 27%;
+    box-shadow: 0px 0px 0px 2223px rgba(0,0,0,0.6);
+}
+
+#editEventTitle {
+    width: 89%;
+    font-size: larger;
+    position: absolute;
+    top: 5%;
+    left: 0%;
+    padding-bottom: 4%;
+    box-shadow: 0px 4px 0px -2px rgba(0, 0, 0, 0.2);
+    padding-left: 11%;
+}
+
+#campoTextoEvento {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    height: 62%;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
+
+#campoDateEdit {
+    font-weight: bold;
+    display: flex;
+    width: 60%;
+    opacity: 0.4;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#eventEditDate {
+    padding: 4%;
+    opacity: 0.8;
+    border-radius: 40px;
+}
+
+#eventContent {
+    margin-top:5%;
+    padding: 2% 2%;
+    font-size: small;
+    width: 70%;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+
+#eventModal {
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 23%;
+    left: 30%;
+    background-color: rgba(1000,1000,1000);
+    border-radius: 23px;
+    height: 39%;
+    width: 27%;
+    box-shadow: 0px 0px 0px 2223px rgba(0,0,0,0.6);
+}
+
+#buttonsEditarEvento {
+    width: 87%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#cancelButton {
+    border: none;
+    padding: 9px 13px;
+    background: #939090;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-right:2%;
+    font-size: small
+}
+
+#editButton {
+    border: none;
+    padding: 9px 17px;
+    background: #258a5e;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: small;
+}
+
+#deleteButton {
+    border: none;
+    background: none;
+    color: red;
+    position: absolute;
+    bottom: 24px;
+    left: 25px;
+    font-size: small;
+}
+
+
+#popUpDeletarEvento {
+    display:none;
+    position: absolute;
+    left: 142px;
+    border: 1px solid rgba(0,0,0,0.3);
+    bottom: 12px;
+    border-radius: 16px;
+    padding: 2%;
+}
+
+#deletarEvento {
+    color: white;
+    font-size: small;
+    background: red;
+    border: none;
+    padding: 1% 9%;
+    border-radius: 13px;
+}
+
+#naoDeletarEvento {
+    background: #ccc;
+    font-size: small;
+    border-radius: 20px;
+    padding: 1% 9%;
+    border: none;
+    margin-left: 7%;
+}
+
+#modalTitle {
+    width: 89%;
+    font-size: larger;
+    position: absolute;
+    top: 5%;
+    left: 0%;
+    padding-bottom: 4%;
+    box-shadow: 0px 4px 0px -2px rgba(0, 0, 0, 0.2);
+    padding-left: 11%;
+}
+#dataEventoCampo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+#eventDate {
+    padding: 2% 2%;
+    font-size: large;
+    width: 40%;
+    border-radius: 8px;
+    border: none;
+    opacity: 0.5;
+    background-color: #ccc;
+}
+
+#campoAdicionarEvento {
+    display: flex;
+    justify-content: center;
+    margin-top:3%;
+}
+#eventTitle {
+    padding: 2.5% 2%;
+    width: 51%;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.5);
+    font-size: medium;
+    margin-top:2%
+}
+#linha {
+    width: 98%;
+    margin-left: 1.1%;
+    height: 2%;
+    box-shadow: 0px 4px 1px -2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 17%;
+}
+
+#eventButtons {
+    position: absolute;
+    bottom: 4%;
+    display: flex;
+    right: 19.3%;
+    width: 42%;
+    justify-content: space-evenly;
+}
+#cancelEventButton {
+    background-color: #726f6f;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: small;
+    border-radius: 8px;
+    padding: 4% 5%;
+    transition: 200ms;
+}
+    #cancelEventButton:hover{
+         opacity:0.8;
+         transition: 200ms
+     }
+
+#saveEventButton {
+    background-color: #258a5e;
+    border: none;
+    font-weight: bold;
+    color: white;
+    font-size: small;
+    border-radius: 8px;
+    padding: 4% 4%;
+    transition: 200ms;
+}
+    #saveEventButton:hover {
+        opacity: 0.8;
+        transition: 200ms
+    }
