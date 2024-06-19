@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 calendar.getEventById(eventId).remove();
                 deleteEventFromCookie(eventId);
                 modalEditEvent.style.display = 'none';
+                popUpDeletarEvento.style.display = 'none';
+
             };
 
             naoDeletarEvento.onclick = function () {
@@ -127,7 +129,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function deleteEventFromCookie(id) {
         eraseCookie(id);
+    
+        var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+        eventos = eventos.filter(evento => evento.id !== id);
+        localStorage.setItem('eventos', JSON.stringify(eventos));
     }
+    
 
     function loadEventsFromCookies() {
         var cookies = document.cookie.split(';');
