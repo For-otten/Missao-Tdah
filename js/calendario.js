@@ -133,17 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('eventos', JSON.stringify(eventos));
     }
 
-    function loadEventsFromCookies() {
-        var cookies = document.cookie.split(';');
-        cookies.forEach(function (cookie) {
-            var cookiePair = cookie.split('=');
-            var eventId = cookiePair[0].trim();
-            var eventData = JSON.parse(decodeURIComponent(cookiePair[1]));
-
+    function loadEventsFromLocalStorage() {
+        var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+        eventos.forEach(function (evento) {
             calendar.addEvent({
-                id: eventId,
-                title: eventData.title,
-                start: eventData.date,
+                id: evento.id,
+                title: evento.title,
+                start: evento.date,
                 allDay: true,
             });
         });
@@ -153,31 +149,5 @@ document.addEventListener('DOMContentLoaded', function () {
         return 'event-' + Math.random().toString(36).substr(2, 9);
     }
 
-    loadEventsFromCookies();
-
-    // Funções para manipulação de cookies
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-
-    function eraseCookie(name) {
-        document.cookie = name + '=; Max-Age=-99999999;';
-    }
+    loadEventsFromLocalStorage();
 });
