@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
             editButtonEvent.onclick = function () {
                 var newTitle = inputEventText.value;
                 selectedEvent.setProp('title', newTitle);
-                saveEventToCookie(eventId, newTitle, selectedEvent.startStr);
+                saveEventToLocalStorage(eventId, newTitle, selectedEvent.startStr);
                 modalEditEvent.style.display = 'none';
             };
 
@@ -36,10 +36,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             deletarEvento.onclick = function () {
                 calendar.getEventById(eventId).remove();
-                deleteEventFromCookie(eventId);
+                deleteEventFromLocalStorage(eventId);
                 modalEditEvent.style.display = 'none';
                 popUpDeletarEvento.style.display = 'none';
-
             };
 
             naoDeletarEvento.onclick = function () {
@@ -53,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
 
         eventDrop: function (info) {
-            saveEventToCookie(info.event.id, info.event.title, info.event.startStr);
+            saveEventToLocalStorage(info.event.id, info.event.title, info.event.startStr);
         },
 
         eventColor: '#258A5E',
@@ -111,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     start: date,
                     allDay: true,
                 });
-                saveEventToCookie(eventId, eventTitle, date);
+                saveEventToLocalStorage(eventId, eventTitle, date);
                 eventModal.style.display = 'none';
             }
         };
@@ -122,19 +121,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function saveEventToCookie(id, title, date) {
-        var eventData = { title: title, date: date };
-        setCookie(id, JSON.stringify(eventData), 30);
+    function saveEventToLocalStorage(id, title, date) {
+        var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
+        eventos.push({ id: id, title: title, date: date });
+        localStorage.setItem('eventos', JSON.stringify(eventos));
     }
 
-    function deleteEventFromCookie(id) {
-        eraseCookie(id);
-    
+    function deleteEventFromLocalStorage(id) {
         var eventos = JSON.parse(localStorage.getItem('eventos')) || [];
         eventos = eventos.filter(evento => evento.id !== id);
         localStorage.setItem('eventos', JSON.stringify(eventos));
     }
-    
 
     function loadEventsFromCookies() {
         var cookies = document.cookie.split(';');
